@@ -39,9 +39,9 @@ def predict():
         sent_length = 20
         Padding_messages = pad_sequences(onehot_message,padding="pre",maxlen=sent_length)
 
-        vect = Padding_messages.toarray()
+        vect = np.array(Padding_messages)
         vect.resize(1,20)
-        my_prediction = model.predict(vect)
+        my_prediction = model.predict_classes(vect)
         return render_template('result.html',prediction = my_prediction)
 
 
