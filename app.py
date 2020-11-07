@@ -10,6 +10,7 @@ import pickle
 app = Flask(__name__)
 model = keras.models.load_model("model.h5")
 encoder = pickle.load(open("Encoder.pkl","rb"))
+model1 = pickle.load(open("Model.pkl","rb"))
 
 
 
@@ -41,7 +42,7 @@ def predict():
 
         vect = np.array(Padding_messages)
         vect.resize(1,20)
-        my_prediction = model.predict_classes(vect)
+        my_prediction = model1.predict(vect)
         return render_template('results.html',prediction = my_prediction)
 
 
