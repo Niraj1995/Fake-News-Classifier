@@ -11,7 +11,7 @@ app = Flask(__name__)
 model = keras.models.load_model("model.h5")
 encoder = pickle.load(open("Encoder.pkl","rb"))
 
-nltk.download('stopwords')
+
 
 
 @app.route('/')
@@ -23,7 +23,7 @@ def predict():
     if request.method == 'POST':
         message = request.form['message']
         data = [message]
-        
+        nltk.download('stopwords')
         ps = PorterStemmer()
         corpus = []
         review = re.sub('[^a-zA-Z]',' ',data)
