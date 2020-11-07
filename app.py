@@ -36,10 +36,11 @@ def predict():
         voc_size = 5000
         onehot_message = [encoder(words,voc_size) for words in corpus]
         
-        sent_length = 12100
+        sent_length = 20
         Padding_messages = pad_sequences(onehot_message,padding="pre",maxlen=sent_length)
 
         vect = Padding_messages.toarray()
+        vect.resize(1,20)
         prediction = model.predict(vect)
         return render_template('result.html',prediction = my_prediction)
 
