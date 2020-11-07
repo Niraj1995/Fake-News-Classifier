@@ -20,13 +20,9 @@ def home():
 
 @app.route('/predict',methods = ["POST"])
 def predict():
-    ...
-    #For rendering result on HTML GUI
-    ...
-#    int_features = [x for x in request.form.values()]
     if request.method == 'POST':
         message = request.form['message']
-    	data = [message]
+        data = [message]
         
         ps = PorterStemmer()
         corpus = []
@@ -43,8 +39,8 @@ def predict():
         sent_length = 12100
         Padding_messages = pad_sequences(onehot_message,padding="pre",maxlen=sent_length)
 
-        vect = cv.transform(Padding_messages).toarray()
-		my_prediction = model.predict(vect)
+        vect = Padding_messages.toarray()
+        prediction = model.predict(vect)
         return render_template('result.html',prediction = my_prediction)
 
 
