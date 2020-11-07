@@ -42,7 +42,7 @@ def predict():
         vect = np.array(Padding_messages)
         vect.resize(1,20)
         my_prediction = model.predict_classes(vect)
-        return render_template('result.html',prediction = my_prediction)
+        return render_template('results.html',prediction = my_prediction)
 
 
 
