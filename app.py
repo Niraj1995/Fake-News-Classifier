@@ -41,7 +41,7 @@ def predict():
 
         vect = Padding_messages.toarray()
         vect.resize(1,20)
-        prediction = model.predict(vect)
+        my_prediction = model.predict(vect)
         return render_template('result.html',prediction = my_prediction)
 
 
